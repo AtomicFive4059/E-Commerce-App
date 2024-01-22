@@ -176,12 +176,20 @@
                     app:ccp_showNameCode="true" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/phoneNumberTil"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
                     android:layout_toEndOf="@id/coutryCodePicker"
-                    android:hint="Phone Number">
+                    android:hint="Phone Number"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:startIconDrawable="@drawable/baseline_keyboard_24">
 
                     <EditText
+                        android:id="@+id/phoneNumberEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -189,6 +197,16 @@
 
 
             </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phoneInputRl"
+                android:text="Update"
+                android:layout_marginTop="20dp"
+                android:minHeight="60dp"
+                app:icon=""
 
         </RelativeLayout>
 
