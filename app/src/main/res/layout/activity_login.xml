@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginOptionActivity.LoginActivity">
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/round_close_24"
+        android:background="@android:color/transparent"
+        android:padding="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animatin"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/animation"/>
+
+
+         <!--   <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:src="@drawable/consumer"/> -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginGoogleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continue With Google..!!"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="30dp"
+                android:minHeight="60dp"
+                app:icon="@drawable/baseline_login_24"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginPhoneBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continue With Phone No..!!"
+                app:cornerRadius="10dp"
+                android:minHeight="60dp"
+                app:icon="@drawable/baseline_mobile_friendly_24"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginEmailBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continue With Email..!!"
+                app:cornerRadius="10dp"
+                android:minHeight="60dp"
+                app:icon="@drawable/baseline_alternate_email_24"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

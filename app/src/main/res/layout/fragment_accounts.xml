@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:background="#FFF3E0"
+    tools:context=".Fragment.AccountsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E3F2FD">
+
+        <!-- ShapeableImageView: show user profile Image-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:scaleType="centerCrop"
+            android:padding="10dp"
+            android:src="@drawable/account_img"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Corner_Rounded"/>
+
+        <!--TextView: User full name label-->
+        <TextView
+            android:id="@+id/nameLabelTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileIv"
+            android:layout_marginTop="20dp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="Name :"/>
+
+        <!--TextView: User full name -->
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/profileIv"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:text="Full Name"/>
+
+        <!--TextView: User email label-->
+
+        <TextView
+            android:id="@+id/emailLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameLabelTv"
+            android:layout_marginTop="10dp"
+            android:text="Email :"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+        <!--TextView: User email-->
+
+        <TextView
+            android:id="@+id/emailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/nameLabelTv"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:text="xxxx@gmail.com"/>
+
+        <!--TextView: User Phone label-->
+        <TextView
+            android:id="@+id/phoneLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailLabelTV"
+            android:layout_marginTop="10dp"
+            android:text="Phone :"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+        <!--TextView: User phone -->
+          <TextView
+            android:id="@+id/phoneTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/emailLabelTV"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="+91 xxxxxxxxxx"/>
+
+        <!--TextView: User Date of Birth label-->
+        <TextView
+            android:id="@+id/dobLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneLabelTV"
+            android:layout_marginTop="10dp"
+            android:text="DOB :"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+        <!--TextView: User Date Of Birth-->
+        <TextView
+            android:id="@+id/dobTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/phoneLabelTV"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="dd/mm/20yy"/>
+
+
+        <!--TextView: User Membership  label-->
+        <TextView
+            android:id="@+id/memberSinceLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dobLabelTV"
+            android:layout_marginTop="10dp"
+            android:text="Member From :"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+        <!--TextView: User Member Since-->
+        <TextView
+            android:id="@+id/memberSinceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/dobLabelTV"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="dd/mm/20yy"/>
+
+        <!--TextView: User Verification label-->
+        <TextView
+            android:id="@+id/verificationLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/memberSinceLabelTV"
+            android:layout_marginTop="10dp"
+            android:text="Account Status :"
+            style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+        <!--TextView: User Verification-->
+        <TextView
+            android:id="@+id/verificationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_below="@id/memberSinceLabelTV"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="Verified"
+            android:textColor="#304FFE"/>
+
+        <!--LinearLayout: Show prefereces e.g LogOut,Edit Profile,Verify Account,Delet Account -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/verificationLabelTV"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <!--TextView: Preferences Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Preferences" />
+
+            <!--MaterialCardView: Click to Logout-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/logoutCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Log Out"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/baseline_directions_run_24"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--MaterialCardView: Click to go EditProfileActivity-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/editProfileCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_edit_note_24"
+                    android:text="Eddit Profile"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="10dp"/>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginOptionActivity.RegisterEmailActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRL"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+       <!-- ImageView: click to go back-->
+           <ImageButton
+               android:id="@+id/toolbarBackBtn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/baseline_arrow_back_24"
+               android:background="@android:color/transparent"
+               android:padding="10dp"
+               android:layout_centerVertical="true"/>
+
+        <!--TextView: Toolbar Title-->
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_centerInParent="true"/>
+
+        <!--View: To make Toolbar look separate from other UI -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRL"
+        android:background="#F3E5F5"
+        android:padding="10dp">
+
+        <!-- ShapeableImageView: Just to show a static image (drawable.account) from drawable-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/baseline_app_registration_24"
+            android:background="#D1C4E9"
+            android:layout_centerHorizontal="true"
+            app:shapeAppearanceOverlay="@style/ImageStyle_Corner_Rounded"/>
+
+
+        <!-- TextView: Just to show Lable text-->
+        <TextView
+            android:id="@+id/registerLableTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Create New Account"
+            android:layout_below="@id/profileIv"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+
+
+    <!--TextInputLayout: Input user email from register -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emaTil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registerLableTv"
+        android:hint="Email"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:startIconDrawable="@drawable/baseline_email_24">
+
+        <EditText
+            android:id="@+id/emailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+          // <!--TextInputLayout: Input user password from register -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emaTil"
+            android:hint="Password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/baseline_password_24">
+
+            <EditText
+                android:id="@+id/passwordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--TextInputLayout: Input confirmation of user password from register -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cPasswordTil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordTil"
+            android:hint="Confirmed Password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/baseline_lock_24">
+
+            <EditText
+                android:id="@+id/cPasswordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- TextView: click to goto LoginEmailActivity -->
+        <TextView
+              android:id="@+id/haveAccountTv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/aleady_having_account_login"
+              android:layout_below="@+id/cPasswordTil"
+              style="@style/TextAppearance.AppCompat.Body2"
+              android:layout_marginTop="5dp"/>
+
+        <!-- MaterialButton: clicked to register user. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            app:cornerRadius="8dp"
+            android:text="Register.."
+            android:layout_alignParentBottom="true"/>
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
