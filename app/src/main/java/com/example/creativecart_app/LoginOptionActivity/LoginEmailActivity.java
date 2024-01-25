@@ -59,6 +59,14 @@ public class LoginEmailActivity extends AppCompatActivity {
             }
         });
 
+        //Handle forgotPasswordTv click, open ForgotPasswordActivity to send Password recovery intruction to registerd email
+        activityLoginEmailBinding.forgotPasswordTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 startActivity(new Intent(LoginEmailActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+
         //handle loginBtn click, start login
         activityLoginEmailBinding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

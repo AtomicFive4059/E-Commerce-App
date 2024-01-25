@@ -18,7 +18,7 @@ public class Utils {
     * @param context the context of the activity/fragment from where this function will be called
     * @param message the message to show in the Toast.*/
    public   static void toast(Context context,String message){
-        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
 
 

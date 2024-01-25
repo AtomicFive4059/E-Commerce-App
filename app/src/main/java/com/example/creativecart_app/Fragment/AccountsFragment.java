@@ -1,5 +1,6 @@
 package com.example.creativecart_app.Fragment;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +26,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.spec.ECField;
+
 public class AccountsFragment extends Fragment {
 
     private FragmentAccountsBinding binding;
     private FirebaseAuth firebaseAuth;
     private Context mContext;
+    private static final String TAG="ACCOUNT_TAG";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -59,7 +64,7 @@ public class AccountsFragment extends Fragment {
         loadMyInfo();
 
         //handle logoutBtn click, logout user and start MainActivity
-        binding.logoutCv.setOnClickListener(new View.OnClickListener() {
+        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -69,6 +74,14 @@ public class AccountsFragment extends Fragment {
                 //start MainActivity
                 startActivity(new Intent(mContext, MainActivity.class));
                 getActivity().finishAffinity();
+            }
+        });
+
+        ///////////////////////
+        binding.editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+           startActivity(new Intent(mContext,ProfileEditActivity.class));
             }
         });
     }
@@ -125,16 +138,22 @@ public class AccountsFragment extends Fragment {
                             binding.verificationTv.setText("Verified");
                         }
 
-                        //set profile image to profileIv
-                        Glide.with(mContext)
-                                .load(profileImageUrl)
-                                .placeholder(R.drawable.account_img)
-                                .into(binding.profileIv);
+                        try {
+                            //set profile image to profileIv
+                            Glide.with(mContext)
+                                    .load(profileImageUrl)
+                                    .placeholder(R.drawable.baseline_person_24)
+                                    .into(binding.profileIv);
+                        }catch (Exception e){
+                            Log.e(TAG, "onDataChange: ",e);
+                        }
+
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        //error
                     }
                 });
     }

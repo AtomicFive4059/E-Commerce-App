@@ -90,7 +90,7 @@
                 app:ccp_contentColor="@color/black"
                 app:ccp_rememberLastSelection="true"
                 app:ccp_showFlag="true"
-                app:ccp_showNameCode="false"/>
+                app:ccp_showNameCode="true"/>
 
 
             <!--TextInputLayout: Input Phone Number -->
