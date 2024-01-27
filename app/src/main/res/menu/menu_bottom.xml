@@ -11,6 +11,7 @@
 
     <item android:id="@+id/menu_sell"
          android:title="sell"
+        android:visible="true"
         android:enabled="false"/>
 
     <item android:id="@+id/menu_my_ads"

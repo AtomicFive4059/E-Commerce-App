@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //Handled close button click, and go back.
-        binding.closeBtn.setOnClickListener(new View.OnClickListener() {
+        binding.SkipCv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

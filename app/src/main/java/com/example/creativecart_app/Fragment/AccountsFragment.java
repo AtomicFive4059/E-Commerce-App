@@ -1,6 +1,7 @@
 package com.example.creativecart_app.Fragment;
 
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.creativecart_app.LoginOptionActivity.ChangePasswordActivity;
+import com.example.creativecart_app.LoginOptionActivity.DeleteAccountActivity;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.MainActivity;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.FragmentAccountsBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,10 +38,12 @@ public class AccountsFragment extends Fragment {
     private FragmentAccountsBinding binding;
     private FirebaseAuth firebaseAuth;
     private Context mContext;
+    private ProgressDialog progressDialog;
     private static final String TAG="ACCOUNT_TAG";
 
     @Override
     public void onAttach(@NonNull Context context) {
+        //get and init Context for this Fragment class
         mContext=context;
         super.onAttach(context);
     }
@@ -49,7 +56,6 @@ public class AccountsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding=FragmentAccountsBinding.inflate(LayoutInflater.from(mContext ),container,false);
-
         return binding.getRoot();
     }
 
@@ -57,6 +63,11 @@ public class AccountsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //init/setup ProgressDialog to while Account Verification
+        progressDialog=new ProgressDialog(mContext);
+        progressDialog.setTitle("Please Wait..");
+        progressDialog.setCanceledOnTouchOutside(false);
 
         //get instance of the firebase auth for Auth related task
         firebaseAuth=FirebaseAuth.getInstance();
@@ -77,13 +88,38 @@ public class AccountsFragment extends Fragment {
             }
         });
 
-        ///////////////////////
         binding.editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
            startActivity(new Intent(mContext,ProfileEditActivity.class));
             }
         });
+
+        //Handle changepasswordBtn click, start ChangePasswordActivity
+        binding.changePasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, ChangePasswordActivity.class));
+            }
+        });
+
+        //Handle verifyAccounyBtn click, start VerifyAccountActivity
+        binding.verifyAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verifyAccount();
+            }
+        });
+
+        //Handle deleteAccountBtn click, Start DeleteAccountActivity
+        binding.deleteAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              startActivity(new Intent(mContext, DeleteAccountActivity.class));
+              getActivity().finishAffinity(); //remove all activities from back-stack because, we will delete user and it's data, so it may produced null exception if we dont remove it
+            }
+        });
+
     }
 
     private void loadMyInfo() {
@@ -127,14 +163,17 @@ public class AccountsFragment extends Fragment {
                             boolean isVerified=firebaseAuth.getCurrentUser().isEmailVerified();
 
                             if (isVerified){
-                                //verified
+                                //verified, hide the Verify Account Option
+                                binding.verifyAccountBtn.setVisibility(View.GONE);
                                 binding.verificationTv.setText("Verified");
                             }else {
-                                //not verified
+                                //not verified, show the Verify Account Option
+                                binding.verifyAccountBtn.setVisibility(View.VISIBLE);
                                 binding.verificationTv.setText("Not Verified");
                             }
                         }else {
-                            //User type is Google or Phone, no need to check if verified or not as it's already verified
+                            //User type is Google or Phone, no need to check if verified or not as it's already verified and hide Verify Account Option
+                            binding.verifyAccountBtn.setVisibility(View.GONE);
                             binding.verificationTv.setText("Verified");
                         }
 
@@ -142,7 +181,7 @@ public class AccountsFragment extends Fragment {
                             //set profile image to profileIv
                             Glide.with(mContext)
                                     .load(profileImageUrl)
-                                    .placeholder(R.drawable.baseline_person_24)
+                                    .placeholder(R.drawable.dog2)
                                     .into(binding.profileIv);
                         }catch (Exception e){
                             Log.e(TAG, "onDataChange: ",e);
@@ -154,6 +193,33 @@ public class AccountsFragment extends Fragment {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         //error
+                    }
+                });
+    }
+
+    private void verifyAccount() {
+        Log.d(TAG, "verifyAccount: ");
+        //show progressDialog
+        progressDialog.setMessage("Sending Account Verification Instruction To Your Email ");
+        progressDialog.show();
+        //send account/email verification instruction to the registered email
+        firebaseAuth.getCurrentUser().sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    //instructoion send, check email, sometimes it goes to the spam folder so if not into inbox please check the spam folder
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "onSuccess: ");
+                        progressDialog.dismiss();
+                        Utils.toast(mContext,"Account Verification Instruction Send To Your Email ");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //failed to send instruction
+                        Log.e(TAG, "onFailure: ",e);
+                        progressDialog.dismiss();
+                        Utils.toast(mContext,"Failed Due To "+e.getMessage());
                     }
                 });
     }

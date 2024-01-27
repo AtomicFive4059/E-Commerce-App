@@ -7,11 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.creativecart_app.Fragment.AccountsFragment;
 import com.example.creativecart_app.Fragment.ChatsFragment;
 import com.example.creativecart_app.Fragment.HomeFragment;
 import com.example.creativecart_app.Fragment.MyAdsFragment;
+import com.example.creativecart_app.LoginOptionActivity.AdCreateActivity;
 import com.example.creativecart_app.LoginOptionActivity.LoginActivity;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.databinding.ActivityMainBinding;
@@ -99,6 +101,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Handle sellFab click, start AdCreateActivity to add create a new add
+        binding.sellFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              startActivity(new Intent(MainActivity.this, AdCreateActivity.class));
+            }
+        });
+
     }
 
     private void showHomeFragment() {

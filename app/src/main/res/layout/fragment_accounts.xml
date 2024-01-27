@@ -21,7 +21,7 @@
             android:layout_marginTop="25dp"
             android:scaleType="centerCrop"
             android:padding="10dp"
-            android:src="@drawable/dog"
+            android:src="@drawable/dog2"
             app:shapeAppearanceOverlay="@style/ImageStyle_Corner_Rounded"/>
 
         <!--TextView: User full name label-->
@@ -218,26 +218,71 @@
 
         </LinearLayout>-->
 
+        <!--MaterialButton: to logout from account-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logOutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/verificationLabelTV"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             app:cornerRadius="8dp"
             android:text="LogOut"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
             app:icon="@drawable/baseline_directions_run_24"/>
 
+        <!--MaterialButton: to edit the profile-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/editProfileBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/logOutBtn"
-            android:layout_marginTop="8dp"
-            app:cornerRadius="8dp"
+            app:cornerRadius="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
             android:text="Edit Profile"
             app:icon="@drawable/baseline_edit_note_24"/>
 
+        <!--MaterialButton: to change teh pasword-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/changePasswordBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editProfileBtn"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            app:cornerRadius="8dp"
+            android:text="Change Password"
+            app:icon="@drawable/baseline_cached_24"/>
+
+        <!--MaterialButton: to verify account-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/verifyAccountBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/changePasswordBtn"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            app:cornerRadius="8dp"
+            android:text="Verify Account"
+            app:icon="@drawable/baseline_verified_24"/>
+
+        <!--MaterialButton: to Deletee the Account-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteAccountBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/verifyAccountBtn"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            app:cornerRadius="8dp"
+            android:text="Delete Account"
+            app:icon="@drawable/baseline_delete_24"/>
 
 
     </RelativeLayout>

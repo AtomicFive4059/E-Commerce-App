@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginOptionActivity.ForgotPasswordActivity">
+    tools:context=".LoginOptionActivity.DeleteAccountActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRL"
@@ -24,11 +24,11 @@
         <!-- TextViw-To show toolbar title -->
         <TextView
             android:id="@+id/toolbarTitleTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Forgot Password"
-            style="@style/TextAppearance.MaterialComponents.Body1"/>
+            android:text="Delete Account" />
 
         <!-- View: To make Toolbar look separate from other UI-->
         <View
@@ -40,72 +40,46 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_below="@id/toolbarRL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarRL"
         android:padding="10dp"
         android:background="#F3E5F5">
 
-        <!-- ShapeableImageView: Just to show a static image (drawable.cached) from drawable-->
+        <!-- ShapeableImageView: Just to show a static image (drawable.account) from drawable-->
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profileIv"
+            android:id="@+id/deleteAccountIv"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerHorizontal="true"
             android:background="#D1C4E9"
             android:padding="1dp"
-            android:src="@drawable/baseline_published_with_changes_24"
+            android:src="@drawable/baseline_delete_sweep_24"
             app:shapeAppearanceOverlay="@style/ImageStyle_Corner_Rounded"/>
 
         <!-- TextView: Just to show Lable text-->
         <TextView
-            android:id="@+id/forgotLableTv"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:id="@+id/deleteAccountLableTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileIv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:text="Forgot Password..!!Enter Your Regisered Email. We Will Send Password Recovery Instruction To It.." />
+            android:text="Are You Sure..!! You Want To Delete Your Account Including App Data..? You Will Not Able To Access Your Account Again..!! "
+            android:layout_below="@id/deleteAccountIv"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"/>
 
-        <!-- TextInputLayout: Input account registered email from login-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailTil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/forgotLableTv"
-            android:hint="Registed Email"
-            android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:startIconDrawable="@drawable/baseline_mark_email_unread_24">
-
-
-        <EditText
-            android:id="@+id/emailEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <!-- MaterialButton: clicked to send password recovery instruction. -->
+        <!-- MaterialButton: clicked to submit new password user info. -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/submitBtn"
+            android:id="@+id/confirmDeleteBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:cornerRadius="8dp"
             android:minHeight="60dp"
-            android:text="Submit"/>
-
+            android:text="Confirm Delete"/>
 
     </RelativeLayout>
 
-
-</RelativeLayout>
+    </RelativeLayout>

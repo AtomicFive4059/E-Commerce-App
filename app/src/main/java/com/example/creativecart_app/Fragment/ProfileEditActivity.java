@@ -279,7 +279,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
                     Glide.with(ProfileEditActivity.this)
                             .load(profileImageUrl)
-                            .placeholder(R.drawable.baseline_person_24)
+                            .placeholder(R.drawable.dog2)
                             .into(binding.profileIv);
 
                 }catch (Exception e){
