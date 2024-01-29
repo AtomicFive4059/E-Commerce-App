@@ -157,7 +157,6 @@ public class ProfileEditActivity extends AppCompatActivity {
                         while (!uriTask.isSuccessful());
                         String uploadedImageUrl=uriTask.getResult().toString();
 
-                        //////////////////////////////////////////////////////////
                         if (uriTask.isSuccessful()){
                             updateProfileDb(uploadedImageUrl);
                         }
@@ -301,6 +300,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         //add menu items to our popup mrnu Param#1 is GroupId,Param#2 is ItemId,Param#3 is OrderID,Param#4 Menu Item Title
        popupMenu.getMenu().add(Menu.NONE,1,1,"Camera");
        popupMenu.getMenu().add(Menu.NONE,2,2,"Gallery");
+
        //show popup menu
        popupMenu.show();
 
@@ -331,7 +331,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                        requestsStoragePermission.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
                    }
                }
-               return false;
+               return true;
            }
        });
     }

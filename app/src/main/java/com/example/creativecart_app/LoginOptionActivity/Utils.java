@@ -14,6 +14,28 @@ import java.util.Locale;
 //A class that will contain static function,constant variable that we will be used in whole application
 public class Utils {
 
+    public static final String ADS_STATUS_AVAILABLE="AVAILABLE";
+    public static final String ADS_STATUS_SOLD="SOLD";
+
+    //Categories arrays of the Ads
+    public static final String[] categories={
+
+            "Mobiles",
+            "Computer/Laptop",
+            "Electronics & Home Appliances",
+            "Vehicle",
+            "Furniture & Home Decor",
+            "Fashion And Beauty",
+            "Books",
+            "Sports",
+            "Animals",
+            "Business",
+            "Agriculture"
+    };
+
+    //Condition arrays of the Ads
+    public static final String[] condition={"New","Used","Refurbished"};
+
     /* A Function to show Toast
     * @param context the context of the activity/fragment from where this function will be called
     * @param message the message to show in the Toast.*/
