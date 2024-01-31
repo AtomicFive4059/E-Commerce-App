@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginOptionActivity.LocationPickerActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRL"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <!-- ImageButton: click to go back-->
+        <ImageButton
+            android:id="@+id/toolbarBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!-- TextViw-To show toolbar title -->
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Pick Location" />
+
+        <!-- ImageView: set/show current location on map-->
+        <ImageButton
+            android:id="@+id/toolbarGpsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_my_location_24"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!-- View: To make Toolbar look separate from other UI-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"/>
+
+    </RelativeLayout>
+
+    <!--Google Map-->
+    <fragment
+        android:id="@+id/mapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_below="@id/toolbarRL"
+        android:layout_above="@id/doneLl"/>
+
+    <!--Search location using Places-SDK-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarRL"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/autocomplete_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+
+    </com.google.android.material.card.MaterialCardView>
+   <!--Done:show the selected location. Get the selected location back to the requesting activity/fragment-->
+   <LinearLayout
+       android:id="@+id/doneLl"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_marginTop="10dp"
+       android:orientation="vertical">
+
+       <com.google.android.material.card.MaterialCardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardUseCompatPadding="true"
+           app:cardCornerRadius="10dp"
+           app:contentPadding="10dp">
+
+           <!--show selected location-->
+           <TextView
+               android:id="@+id/selectedPlaceTv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+       </com.google.android.material.card.MaterialCardView>
+
+       <!--Get the selected location back to the requesting activity/fragment-->
+       <com.google.android.material.button.MaterialButton
+           android:id="@+id/doneBtn"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Done"
+           app:cornerRadius="10dp"/>
+
+   </LinearLayout>
+
+    </RelativeLayout>

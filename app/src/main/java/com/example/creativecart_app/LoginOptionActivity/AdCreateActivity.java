@@ -102,6 +102,15 @@ public class AdCreateActivity extends AppCompatActivity {
             }
         });
 
+        //Handled locationAct click, launch LocationPickerActivity to pick location from map
+        binding.locationAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdCreateActivity.this,LocationPickerActivity.class);
+                locationPickerActivityResultLauncher.launch(intent);
+            }
+        });
+
         binding.postAdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +118,41 @@ public class AdCreateActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private ActivityResultLauncher<Intent> locationPickerActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    Log.d(TAG, "onActivityResult: ");
+                    
+                    //get result of location pick from LocationPickerActivity
+                    if (result.getResultCode()==Activity.RESULT_OK){
+                        
+                         Intent data=result.getData();
+                         
+                         if (data!=null){
+                             latitude=data.getDoubleExtra("latitude",0.0);
+                             longitude=data.getDoubleExtra("longitude",0.0);
+                             address=data.getStringExtra("address");
+
+                             Log.d(TAG, "onActivityResult: latitude "+latitude);
+                             Log.d(TAG, "onActivityResult: longitude "+longitude);
+                             Log.d(TAG, "onActivityResult: address "+address);
+
+                             binding.locationAct.setText(address);
+                         }
+                         
+                    }else {
+                        Log.d(TAG, "onActivityResult: Cancelled..");
+                        Utils.toast(AdCreateActivity.this,"Cancelled..");
+                    }
+                }
+            }
+    );
+
 
     private void loadsImages() {
         Log.d(TAG, "loadsImages: ");

@@ -5,7 +5,9 @@
     <string name="not_having_account_register"><i>Not Having Account..?</i> <b>Start Here..!!</b></string>
     <string name="aleady_having_account_login"><i>Already Having Account..?</i>  <b>Login..!!</b></string>
     <string name="default_web_client_id">144307311787-r12ntghie26e9li48k553e61ljsfv8v1.apps.googleusercontent.com</string>
-    <string name="does_not_recieve_otp_resend"><i>Does Not Recieved OTP..?</i> <b>Resend..!!</b></string>
+    <string name="does_not_recieve_otp_resend"><i>Does Not Received OTP..?</i> <b>Resend..!!</b></string>
     <string name="Verified">Verified</string>
     <string name="forgot_password_recover"><i>Forgot Password..?</i> <b>Click Here..!!</b></string>
+
+    <string name="google_map_api_key">rty</string>
 </resources>
