@@ -52,10 +52,10 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-analytics:21.5.0")
-    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
-    implementation("com.google.firebase:firebase-crashlytics:18.6.0")
+    implementation("com.google.firebase:firebase-crashlytics:18.6.1")
 
 
     // Also add the dependency for the Google Play services library and specify its version
@@ -71,4 +71,16 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     //annotationProcessor ("com.github.bumptech.glide:compiler:4.15.0")
 
+
+
+    // Maps SDK for Android
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
+
+    //places sdk api
+        implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.21"))
+        implementation ("com.google.android.libraries.places:places:3.3.0")
+
     }
+
+
