@@ -58,18 +58,24 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics:18.6.1")
 
 
+    //picasso
+    implementation ("com.squareup.picasso:picasso:2.71828")// Use the latest version
+
+
+
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
-    //LottiAnimation Depandancy
+    //LottiAnimation Dependency
     implementation ("com.airbnb.android:lottie:4.0.0")
 
-    //country code picker dependancy
+    //country code picker dependency
     implementation ("com.hbb20:ccp:2.6.0")
 
     //glide
+
     implementation ("com.github.bumptech.glide:glide:4.16.0")
-    //annotationProcessor ("com.github.bumptech.glide:compiler:4.15.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
 
 
@@ -77,10 +83,17 @@ dependencies {
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
 
 
-    //places sdk api
+        //places sdk api
         implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.21"))
         implementation ("com.google.android.libraries.places:places:3.3.0")
 
-    }
+    //FirebaseUI for RecyclerView Data from Firebase DB
+    implementation ("com.firebaseui:firebase-ui-database:8.0.2")
+
+
+
+
+
+}
 
 

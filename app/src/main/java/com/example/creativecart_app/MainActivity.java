@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
+import com.bumptech.glide.Glide;
 import com.example.creativecart_app.Fragment.AccountsFragment;
 import com.example.creativecart_app.Fragment.ChatsFragment;
 import com.example.creativecart_app.Fragment.HomeFragment;
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         //activity_main.xml = ActivityMainBinding
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+//        Glide.with(this).setLogLevel(Log.VERBOSE); //setloglevel not available
+
 
         //get instance of the firebase auth for firebase auth related task
         firebaseAuth=FirebaseAuth.getInstance();

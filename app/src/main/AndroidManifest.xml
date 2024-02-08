@@ -8,11 +8,19 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
 
     <!--Location permission-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.READ_BASIC_PHONE_STATE"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -24,7 +32,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CreativeCart_App"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31"
+
+        android:requestLegacyExternalStorage="true"
+        android:preserveLegacyExternalStorage="true"
+        >
+
+        <activity android:name=".Fragment.ProfileEditActivity"
+            android:exported="false"/>
 
         <activity android:name=".LoginOptionActivity.LocationPickerActivity"
             android:exported="false"/>
@@ -41,9 +56,7 @@
         <activity
             android:name=".LoginOptionActivity.ForgotPasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".Fragment.ProfileEditActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginOptionActivity.LoginPhoneActivity"
             android:exported="false" />
@@ -69,6 +82,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_api_key" />
+
+
+        <uses-library android:name="org.apache.http.legacy"
+        android:required="false"/>
     </application>
 
 </manifest>

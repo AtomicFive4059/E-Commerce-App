@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <!--ShapeableImageView: show image picked/taken from Camera/Gallery-->
         <com.google.android.material.imageview.ShapeableImageView

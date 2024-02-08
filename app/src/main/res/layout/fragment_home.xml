@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <!--MaterialCardView: click to pick and show the location to show ads nearby-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/locationCv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp">
+
+        <TextView
+            android:id="@+id/locationTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="Choose Location"
+            app:drawableStartCompat="@drawable/baseline_location_pin_24" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!--MaterialCardView: click to pick and show the location to show ads nearby-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchCv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
+
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/quantum_ic_search_grey600_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="Search"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--TextView: Browse Categories Label-->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Overline"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:text="Browse Categories"/>
+
+    <!--RecyclerView: show Ads categories-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/row_category"/>
+
+    <!--RecyclerView: show Ads-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adsRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home" />
-
-</FrameLayout>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_ad"/>
+</LinearLayout>

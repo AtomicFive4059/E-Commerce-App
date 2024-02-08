@@ -8,6 +8,7 @@
     <string name="does_not_recieve_otp_resend"><i>Does Not Received OTP..?</i> <b>Resend..!!</b></string>
     <string name="Verified">Verified</string>
     <string name="forgot_password_recover"><i>Forgot Password..?</i> <b>Click Here..!!</b></string>
+    <string name="price">$</string>
 
-    <string name="google_map_api_key">rty</string>
+    <string name="google_map_api_key">AIzaSyBf3X4wnZIE6VyzByTVGKePlzHm0v_a3-0</string>
 </resources>

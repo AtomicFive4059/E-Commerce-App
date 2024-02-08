@@ -1,4 +1,4 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.models;
 
 import android.net.Uri;
 

@@ -25,6 +25,7 @@ import android.widget.PopupMenu;
 
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.ActivityAdCreateBinding;
+import com.example.creativecart_app.models.ModelImagePicked;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -53,7 +54,7 @@ public class AdCreateActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     //Image Uri to hold the Uri of image (Picked/Captured using Gallery/Camera)
-    private Uri imageUri = null;
+    private Uri imageUri =null;
 
     //List of images (Picked/Captured using Gallery/Camera or from internet)
     private ArrayList<ModelImagePicked> imagePickedArrayList;
@@ -326,7 +327,7 @@ public class AdCreateActivity extends AppCompatActivity {
                         Log.d(TAG, "onActivityResult: imageUri: "+imageUri);
 
                         //timestamp will be used as a id of the image picked
-                        String timestamp=" "+Utils.getTimestap();
+                        String timestamp=""+Utils.getTimestap();
 
                         //Setup model for images, param:1 is id, param:2 is imageUri, param:3 is imageUrl,fromInternet
                         ModelImagePicked modelImagePicked=new ModelImagePicked(timestamp,imageUri,null,false);
@@ -375,11 +376,11 @@ public class AdCreateActivity extends AppCompatActivity {
             //no condition entered in conditionAct, show error in conditionAct and focus
             binding.conditonAct.setError("Choose Condition");
             binding.conditonAct.requestFocus();
-        } /* else if (address.isEmpty()) {
-            //no location choose in locationAct, show error in locationAct and focus ////////////////////////////////////////////////////////////////
+        }  else if (address.isEmpty()) {
+            //no location choose in locationAct, show error in locationAct and focus
               binding.locationAct.setError("Choose Location");
               binding.locationAct.requestFocus();
-        } */ else if (title.isEmpty()) {
+        }  else if (title.isEmpty()) {
             //no title entered in titleEt, show error in titileEt and focus
             binding.titleEt.setError("Provide Title");
             binding.titleEt.requestFocus();
@@ -412,16 +413,16 @@ public class AdCreateActivity extends AppCompatActivity {
 
         //setup data to add in firebase database
         HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("id"," "+keyId);
-        hashMap.put("uid"," "+firebaseAuth.getUid());
-        hashMap.put("brand"," "+brand);
-        hashMap.put("category"," "+category);
-        hashMap.put("condition"," "+condition);
-        hashMap.put("address"," "+address);
-        hashMap.put("price"," "+price);
-        hashMap.put("title"," "+title);
-        hashMap.put("description"," "+description);
-        hashMap.put("status"," "+Utils.ADS_STATUS_AVAILABLE);
+        hashMap.put("id",""+keyId);
+        hashMap.put("uid",""+firebaseAuth.getUid());
+        hashMap.put("brand",""+brand);
+        hashMap.put("category",""+category);
+        hashMap.put("condition",""+condition);
+        hashMap.put("address",""+address);
+        hashMap.put("price",""+price);
+        hashMap.put("title",""+title);
+        hashMap.put("description",""+description);
+        hashMap.put("status",""+Utils.ADS_STATUS_AVAILABLE);
         hashMap.put("timestamp",+timestamp);
         hashMap.put("latitude",+latitude);
         hashMap.put("longitude",+longitude);
@@ -498,8 +499,8 @@ public class AdCreateActivity extends AppCompatActivity {
                             if (uriTask.isSuccessful()){
 
                                 HashMap<String,Object> hashMap =new HashMap<>();
-                                hashMap.put("id"," "+modelImagePicked.imageUri);
-                                hashMap.put("imageUrl"," "+uploadedImageUrl);
+                                hashMap.put("id",""+modelImagePicked.getId());
+                                hashMap.put("imageUrl",""+uploadedImageUrl);
 
                                 //add in firebase database. Ads-->AdsId-->imageId-->ImageData
                                 DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Ads");

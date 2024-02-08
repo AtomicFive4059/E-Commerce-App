@@ -69,16 +69,19 @@
                 style="@style/TextAppearance.MaterialComponents.Body1"/>
 
             <!--RecyclerView: show images pick/taken from Camera/Gallery -->
+
+            <!--TextInputLayout: input brand of the Ad being created -->
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imageRv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageLabelTv"
+                android:layout_marginTop="1dp"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:spanCount="4"
-                tools:listitem="@layout/row_image_picked"/>
+                tools:listitem="@layout/row_image_picked" />
 
-            <!--TextInputLayout: input brand of the Ad being created -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/brandTil"
                 android:layout_width="match_parent"

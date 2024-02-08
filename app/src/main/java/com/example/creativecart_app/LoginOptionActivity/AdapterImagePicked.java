@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.RowImagePickedBinding;
+import com.example.creativecart_app.models.ModelImagePicked;
 
 import java.util.ArrayList;
 
