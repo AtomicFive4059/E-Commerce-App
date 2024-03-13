@@ -16,22 +16,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.ActivityLocationPickerBinding;
-//import com.google.android.gms.common.api.Status;
-//import com.google.android.gms.location.FusedLocationProviderClient;
-//import com.google.android.gms.location.LocationServices;
-//import com.google.android.gms.maps.CameraUpdateFactory;
-//import com.google.android.gms.maps.GoogleMap;
-//import com.google.android.gms.maps.OnMapReadyCallback;
-//import com.google.android.gms.maps.SupportMapFragment;
-//import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-//import com.google.android.gms.maps.model.LatLng;
-//import com.google.android.gms.maps.model.MarkerOptions;
-//import com.google.android.gms.tasks.OnFailureListener;
-//import com.google.android.gms.tasks.OnSuccessListener;
-//import com.google.android.gms.tasks.Task;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -120,6 +106,9 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 String id=place.getId();
                 String title= place.getName();
                 LatLng latLng=place.getLatLng();
+
+                assert latLng != null;
+
                 selectedLatitude=latLng.latitude;
                 selectedLongitude=latLng.latitude;
                 selectedAddress= place.getAddress();
@@ -136,14 +125,20 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
         //Handle toolbarBackBtn click, to go back
      /*   binding.toolbarBackBtn.setOnClickListener(new View.OnClickListener() {
+
+        binding.toolbarBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              onBackPressed();
             }
+
         });*/
 
+
+
     //Handle toolbarGpsBtn click, if GPS enabled get and show user current location
-       binding.toolbarGPSBtn.setOnClickListener(new View.OnClickListener() {
+        binding.toolbarGPSBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 

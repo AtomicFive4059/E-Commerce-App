@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.PopupMenu;
 
 import com.example.creativecart_app.R;
+import com.example.creativecart_app.adapters.AdapterImagePicked;
 import com.example.creativecart_app.databinding.ActivityAdCreateBinding;
 import com.example.creativecart_app.models.ModelImagePicked;
 import com.google.android.gms.tasks.OnFailureListener;
