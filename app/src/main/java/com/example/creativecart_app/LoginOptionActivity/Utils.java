@@ -1,6 +1,8 @@
 package com.example.creativecart_app.LoginOptionActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.format.DateFormat;
 import android.widget.Toast;
 
@@ -29,15 +31,15 @@ public class Utils {
     public static final String[] categories={
 
             "Mobiles",
-            "Computer/Laptop",
-            "Electronics & Home Appliances",
+            "Laptop",
+            "Electronics",
             "Vehicle",
-            "Furniture & Home Decor",
-            "Fashion And Beauty",
+            "Home Decor",
+            "Beauty",
             "Books",
             "Sports",
             "Animals",
-            "Business",
+            "Hobbies",
             "Agriculture"
     };
 
@@ -52,7 +54,7 @@ public class Utils {
             R.drawable.cate_book,
             R.drawable.cate_sports,
             R.drawable.cate_pets,
-            R.drawable.cate_entrepreneur,
+            R.drawable.cate_hobby,
            R.drawable.cate_agri,
     };
 
@@ -63,7 +65,7 @@ public class Utils {
     * @param context the context of the activity/fragment from where this function will be called
     * @param message the message to show in the Toast.*/
    public   static void toast(Context context,String message){
-        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
     }
 
 
@@ -161,5 +163,54 @@ public class Utils {
                         }
                     });
         }
+    }
+
+    /*Launch Call Intent with phone number
+     @param1: Context the context of activity/fragment from where this will be called
+     @param2: the phone number that will be open in call intent
+     */
+    public static void callIntent(Context context,String phone){
+
+        Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("tel:"+Uri.encode(phone)));
+        context.startActivity(intent);
+    }
+
+
+    /*Launch SMS Intent with phone number
+     @param1: Context the context of activity/fragment from where this will be called
+     @param2: the phone number that will be open in SMS intent
+     */
+    public static void smsIntent(Context context,String phone){
+
+        Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"+Uri.encode(phone)));
+        context.startActivity(intent);
+    }
+
+    /*Launch Google Map with input location
+     @param1: Context the context of activity/fragment from where this will be called
+     @param2: latitude the latitude of the location to be shown in google map
+     @param2: longitude the longitude of the location to be shown in google map
+     */
+
+    public static void mapIntent(Context context,double latitude, double longitude){
+        //Create a Uri from on intent string. Use the result to create on Intent.
+
+        Uri gmmIntentUri=Uri.parse("http://maps.google.com/maps?daddr=" + latitude +","+longitude);
+
+        //Create an Intent from ggmIntentUri. set the action to ACTION_VIEW
+        Intent mapIntent=new Intent(Intent.ACTION_VIEW,gmmIntentUri);
+
+        //Make the Intent Explicit by setting the Google Maps Package
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+        //Attempt to start an activity that can handle the Intent e.g. Google Map
+        if (mapIntent.resolveActivity(context.getPackageManager()) !=null){
+            //Google Map installed, start
+            context.startActivity(mapIntent);
+        }else {
+            //Google Map not installed, can't start
+            Utils.toast(context,"Google Map Not Installed..!");
+        }
+
     }
 }

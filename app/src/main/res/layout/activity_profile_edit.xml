@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FBE9E7"
-    tools:context=".Fragment.ProfileEditActivity">
+    tools:context=".activity.ProfileEditActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRL"
@@ -18,7 +17,7 @@
             android:id="@+id/toolbarBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
+            android:src="@drawable/baseline_arrow_back_ios_24"
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:padding="10dp"/>
@@ -26,11 +25,12 @@
         <!-- TextViw-To show toolbar title -->
         <TextView
             android:id="@+id/toolbarTitleTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
             android:layout_centerInParent="true"
-            style="@style/TextAppearance.MaterialComponents.Body1"/>
+            android:layout_toEndOf="@id/toolbarBackBtn"
+            android:text="Edit Profile"/>
 
         <!-- View: To make Toolbar look separate from other UI-->
         <View
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/dog2"/>
+                    android:src="@drawable/baseline_downloading_24"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/profileImagePickFab"
@@ -73,8 +73,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
                     android:src="@drawable/baseline_add_a_photo_24"
                     android:tint="@color/black"
                     android:backgroundTint="#7A58B4"
@@ -210,8 +208,7 @@
                 android:layout_below="@+id/phoneInputRl"
                 android:layout_marginTop="25dp"
                 app:cornerRadius="8dp"
-                android:text="Update"
-                app:icon="@drawable/baseline_present_to_all_24" />
+                android:text="Update"/>
 
         </RelativeLayout>
 

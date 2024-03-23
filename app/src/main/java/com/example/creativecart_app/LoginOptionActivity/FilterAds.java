@@ -2,6 +2,7 @@ package com.example.creativecart_app.LoginOptionActivity;
 
 import android.widget.Filter;
 
+import com.example.creativecart_app.adapters.AdapterAds;
 import com.example.creativecart_app.models.ModelAds;
 
 import java.util.ArrayList;

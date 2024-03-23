@@ -18,7 +18,6 @@
             android:layout_height="120dp"
             android:layout_marginEnd="10dp"
             style="@style/ImageStyle_Corner_Rounded"
-            android:scaleType="centerCrop"
             android:padding="10dp"
             android:src="@drawable/baseline_downloading_24" />
 
@@ -30,21 +29,22 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/imageIv"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="3"
+            android:layout_marginEnd="40dp"
             android:text="The Ad Title"
             style="@style/TextAppearance.MaterialComponents.Body1"/>
 
         <!--TextView:Ads description-->
-        <TextView
-            android:id="@+id/descriptionTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageIv"
-            android:layout_below="@id/titleTv"
-            android:layout_toStartOf="@id/favBtn"
-            android:ellipsize="end"
-            android:lines="3"
-            android:text="The long description of the Ads can be of multiple lines up to 3 lines. so descriped your product here"/>
+<!--        <TextView-->
+<!--            android:id="@+id/descriptionTv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toEndOf="@id/imageIv"-->
+<!--            android:layout_below="@id/titleTv"-->
+<!--            android:layout_toStartOf="@id/favBtn"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="3"-->
+<!--            android:text="The long description of the Ads can be of multiple lines up to 3 lines. so descriped your product here"/>-->
 
         <!--ImageButton: Add/Remove the Ads to/from favourite-->
         <ImageButton
@@ -56,28 +56,28 @@
             android:src="@drawable/ic_fav_no"
             android:background="@android:color/transparent"/>
 
-        <!--TextView:show address of the Ads-->
-        <TextView
-            android:id="@+id/addressTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/descriptionTv"
-            android:layout_toEndOf="@id/imageIv"
-            android:ellipsize="end"
-            android:maxLines="3"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:text="Address of the Ads"/>
+<!--        &lt;!&ndash;TextView:show address of the Ads&ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/addressTv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/descriptionTv"-->
+<!--            android:layout_toEndOf="@id/imageIv"-->
+<!--            android:ellipsize="end"-->
+<!--            android:maxLines="3"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            android:text="Address of the Ads"/>-->
 
           <!--TextView:show condition of Ads e.g. New/Used/Refurbish-->
         <TextView
             android:id="@+id/conditonTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addressTv"
+            android:layout_below="@id/titleTv"
             android:text="New"
             android:layout_toEndOf="@id/imageIv"
             android:textSize="12dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
             style="@style/TextAppearance.MaterialComponents.Overline"/>
 
@@ -87,10 +87,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_below="@id/addressTv"
+            android:layout_below="@id/titleTv"
             android:layout_toEndOf="@id/conditonTv"
             android:textSize="12sp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="2dp"
             android:text="@string/price"/>
 
@@ -101,10 +101,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="2dp"
             android:layout_toEndOf="@id/priceSymbolTv"
-            android:layout_below="@id/addressTv"
+            android:layout_below="@id/titleTv"
             android:textSize="12sp" />
 
         <!--TextView: show the date of Ads, when it is added-->
@@ -113,12 +113,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:textSize="12dp"
             android:layout_alignParentEnd="true"
             android:text="dd/mm/yyyy"
             android:layout_marginEnd="10dp"
-            android:layout_below="@id/addressTv"/>
+            android:layout_below="@id/titleTv"/>
             
 
     </RelativeLayout>

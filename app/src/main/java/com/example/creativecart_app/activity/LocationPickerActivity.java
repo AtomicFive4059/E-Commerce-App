@@ -1,4 +1,4 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.activity;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -16,6 +16,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.ActivityLocationPickerBinding;
 import com.google.android.gms.common.api.Status;

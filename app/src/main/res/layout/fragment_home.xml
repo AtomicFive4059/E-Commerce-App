@@ -49,24 +49,39 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
+
+
     <!--TextView: Browse Categories Label-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="6dp"-->
+<!--        style="@style/TextAppearance.MaterialComponents.Overline"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textAllCaps="true"-->
+<!--        android:layout_marginBottom="2sp"-->
+<!--        android:text="Browse Products"/>-->
+
     <TextView
+        android:id="@+id/imageLabelTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Overline"
+        android:text="Browse Products"
         android:layout_marginStart="6dp"
         android:textStyle="bold"
-        android:textAllCaps="false"
-        android:text="Browse Categories"/>
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_marginBottom="2sp"/>
+
 
     <!--RecyclerView: show Ads categories-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoriesRv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
-        tools:listitem="@layout/row_category"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/categoriesRv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--        android:orientation="horizontal"-->
+<!--        tools:listitem="@layout/row_category"/>-->
 
     <!--RecyclerView: show Ads-->
     <androidx.recyclerview.widget.RecyclerView

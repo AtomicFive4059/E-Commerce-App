@@ -23,9 +23,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.creativecart_app.LoginOptionActivity.AdapterAds;
-import com.example.creativecart_app.LoginOptionActivity.AdapterCategory;
-import com.example.creativecart_app.LoginOptionActivity.LocationPickerActivity;
+import com.example.creativecart_app.adapters.AdapterAds;
+import com.example.creativecart_app.adapters.AdapterCategory;
+import com.example.creativecart_app.activity.LocationPickerActivity;
 import com.example.creativecart_app.models.ModelAds;
 import com.example.creativecart_app.models.ModelCategory;
 import com.example.creativecart_app.LoginOptionActivity.RvListenerCategory;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment  {
 
     //TAG to show in LogCat
     private static final String TAG="HOME_TAG";
-    private static final int MAX_DISTANCE_TO_LOAD_ADS_KM=10;
+    static final int MAX_DISTANCE_TO_LOAD_ADS_KM=10;
 
     //Context for this fragment class
     private Context mContext;
@@ -181,8 +181,8 @@ public class HomeFragment extends Fragment  {
         ArrayList<ModelCategory> categoryArrayList= new ArrayList<>();
 
         //ModelCategory instance to show all products
-        ModelCategory modelCategory=new ModelCategory("All",R.drawable.cate_expand);
-        categoryArrayList.add(modelCategory);
+      //  ModelCategory modelCategory=new ModelCategory("All",R.drawable.cate_expand);
+      //  categoryArrayList.add(modelCategory);
 
         //Get categories from Utils class and in categoryArrayList
         for (int i=0;i< Utils.categories.length;i++){
@@ -201,7 +201,7 @@ public class HomeFragment extends Fragment  {
             }
         });
         //set adapter to the RecyclerView i.e categoriesRv
-        binding.categoriesRv.setAdapter(adapterCategory);
+       // binding.categoriesRv.setAdapter(adapterCategory);
     }
 
     private void loadAds(String category){
@@ -274,7 +274,7 @@ public class HomeFragment extends Fragment  {
 
         //calculate distance
         double distanceInMeters=startPoint.distanceTo(endPoint);
-        double distanceInKm=distanceInMeters/100;
+        double distanceInKm=distanceInMeters/1000000000;
 
         return distanceInKm;
     }

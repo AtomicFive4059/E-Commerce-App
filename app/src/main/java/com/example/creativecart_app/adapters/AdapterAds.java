@@ -1,6 +1,7 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,10 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.example.creativecart_app.LoginOptionActivity.FilterAds;
+import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
+import com.example.creativecart_app.activity.AdsDetailsActivity;
 import com.example.creativecart_app.databinding.RowAdBinding;
 import com.example.creativecart_app.models.ModelAds;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -81,14 +85,16 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
     public void onBindViewHolder(@NonNull HolderAds holder, int position) {
         //get data from the particular position of list and set to the UI View row_ads.xml and Handle Click
         ModelAds modelAds=adsArrayList.get(position);
+        Log.d(TAG, "onBindViewHolder: "+adsArrayList.get(position));
 
-        String title=modelAds.getTitle();
         String description=modelAds.getDescription();
-        String address =modelAds.getAddress();
+        String title=modelAds.getTitle();
+
+      //  String address =modelAds.getAddress();
         String condition=modelAds.getCondition();
         String price=modelAds.getPrice();
         long timestamp=modelAds.getTimestamp();
-        String formatedDate=Utils.formatTimestampDate(timestamp);
+        String formatedDate= Utils.formatTimestampDate(timestamp);
 
         //Fuction call: load first image from available image of Ads e.g. if there are 5 image od Ads, load first image
         loadAdsFirstImage(modelAds,holder);
@@ -100,11 +106,22 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
 
         //set data to UI View of row_ads.xml
         holder.titleTv.setText(title);
-        holder.descriptionTv.setText(description);
-        holder.addressTv.setText(address);
+       // holder.descriptionTv.setText(description);
+      //  holder.addressTv.setText(address);
         holder.conditonTv.setText(condition);
         holder.priceTv.setText(price);
         holder.dateTv.setText(formatedDate);
+
+        //Handle itemView.setOnClickListener click, Open the AdsDetailsActivity, also pass the id of the Ads to intent to load the details
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, AdsDetailsActivity.class);
+                intent.putExtra("adsId",modelAds.getId());
+                context.startActivity(intent);
+            }
+        });
 
 
         //Handled favBtn click, add/remove the Ads to/from favorite of current user
@@ -126,7 +143,7 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
 
     }
 
-    private void checkIsFavorite(ModelAds modelAds, HolderAds holderAds) {
+    public void checkIsFavorite(ModelAds modelAds, HolderAds holderAds) {
 
         //DB path to check, if Ads is in favorites of current user. Users-->Uid-->Favorites-->AdsId
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -188,25 +205,21 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
 
                             //get image to Image View i.e imageIv
                             try {
-                                Log.d(TAG, "onDataChange image loaded with url: "+ imageUrl); /////
-                                Log.d(TAG, "onDataChange image loaded with url: "+ imageUrl); /////
+                                Log.d(TAG, "onDataChange image loaded with url: "+ imageUrl);
+                                Log.d(TAG, "onDataChange image loaded with url: "+ imageUrl);
+
                                 RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
-
-                                //Glide.with(context).load(" https://firebasestorage.googleapis.com/v0/b/creative-cart-app.appspot.com/o/Ads%2F1707046932345?alt=media&token=dcbfde0f-7b9c-4bf5-a133-66475618242d").apply(requestOptions).placeholder(R.drawable.product).into(holder.imageIv);
-                                //Glide.with(holder.imageIv.getContext()).load(" https://firebasestorage.googleapis.com/v0/b/creative-cart-app.appspot.com/o/Ads%2F1707046932345?alt=media&token=dcbfde0f-7b9c-4bf5-a133-66475618242d").apply(new RequestOptions().override(324,324).centerCrop()).into(holder.imageIv);
-
-                                //Picasso.get().load(" https://firebasestorage.googleapis.com/v0/b/creative-cart-app.appspot.com/o/Ads%2F1707046932345?alt=media&token=dcbfde0f-7b9c-4bf5-a133-66475618242d").into(holder.imageIv);
-
 
                                 Glide.with(context)
                                         .load(imageUrl)
+                                        .override(Target.SIZE_ORIGINAL) // This will load the image with its original size
                                         .apply(requestOptions)
                                         .listener(new RequestListener<Drawable>() {
                                             @Override
                                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                                 Log.e("GlideError", "Load failed", e);
                                                 return false;
-                                             }
+                                            }
 
                                             @Override
                                             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
@@ -216,8 +229,9 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
                                         .into(holder.imageIv);
 
 
+
                             }catch (Exception e){
-                                Log.e(TAG, "onDataChange: ",e);
+                                Log.e(TAG, "onDataChange: at  Profile activity:::: ",e);
                             }
                         }
                     }
@@ -261,8 +275,8 @@ public class AdapterAds extends  RecyclerView.Adapter<AdapterAds.HolderAds> impl
             //init UI View of row_ads.xml
             imageIv=binding.imageIv;
             titleTv=binding.titleTv;
-            descriptionTv=binding.descriptionTv;
-            addressTv=binding.addressTv;
+           // descriptionTv=binding.descriptionTv;
+           // addressTv=binding.addressTv;
             conditonTv=binding.conditonTv;
             priceTv=binding.priceTv;
             dateTv=binding.dateTv;

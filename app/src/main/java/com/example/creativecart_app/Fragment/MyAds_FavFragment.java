@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.creativecart_app.LoginOptionActivity.AdapterAds;
+import com.example.creativecart_app.adapters.AdapterAds;
 import com.example.creativecart_app.models.ModelAds;
 import com.example.creativecart_app.databinding.FragmentMyAdsFavBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +47,7 @@ public class MyAds_FavFragment extends Fragment {
     private AdapterAds adapterAds;
     public MyAds_FavFragment() {
         // Required empty public constructor
-    }
+    }  
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -132,8 +132,11 @@ public class MyAds_FavFragment extends Fragment {
                                                 //prepare ModelAds with all data from Firebase DB
                                                 ModelAds modelAds = snapshot.getValue(ModelAds.class);
 
+                                                Log.d(TAG, "onDataChange modelAds: "+modelAds.getTitle());
+
                                                 //adding prepare model to Arraylist
                                                 adsArrayList.add(modelAds);
+                                                Log.d(TAG, "onDataChange adsArrayList: "+adsArrayList);
 
                                             }catch (Exception e){
                                                 Log.e(TAG, "onDataChange: ",e);

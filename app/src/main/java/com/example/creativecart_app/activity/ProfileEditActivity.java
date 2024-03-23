@@ -1,20 +1,19 @@
-package com.example.creativecart_app.Fragment;
+package com.example.creativecart_app.activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.datastore.preferences.protobuf.InvalidProtocolBufferException;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +25,13 @@ import android.view.View;
 import android.widget.PopupMenu;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+import com.example.creativecart_app.Fragment.AccountsFragment;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.ActivityProfileEditBinding;
@@ -76,11 +82,11 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         loadMyInfo();
 
-        ////Handled toolbarBackBtn button click, and go back.
+        //Handled toolbarBackBtn button click, and go back.
         binding.toolbarBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileEditActivity.this,AccountsFragment.class));
+                onBackPressed();
             }
         });
 
@@ -184,7 +190,7 @@ public class ProfileEditActivity extends AppCompatActivity {
          //setup data in hashMap to update to Firebase Database
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("name",""+name);
-        hashMap.put("dob"," "+dob);
+        hashMap.put("dob",""+dob);
 
         if (imageUrl !=null){
             //update profileImageUrl in the Database only if uploaded image url is not null
@@ -235,16 +241,16 @@ public class ProfileEditActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 //get User Info, spelling shoud be as in Firebase realtime database
-                String dob=" "+snapshot.child("dob").getValue();
-                String email=" "+snapshot.child("email").getValue();
-                String name=" "+snapshot.child("name").getValue();
-                String phoneCode=" "+snapshot.child("phoneCode").getValue();
-                String phoneNumber=" "+snapshot.child("phoneNumber").getValue();
-                String profileImageUrl=" "+snapshot.child("profileImageUrl").getValue();
+                String dob=""+snapshot.child("dob").getValue();
+                String email=""+snapshot.child("email").getValue();
+                String name=""+snapshot.child("name").getValue();
+                String phoneCode=""+snapshot.child("phoneCode").getValue();
+                String phoneNumber=""+snapshot.child("phoneNumber").getValue();
+                String profileImageUrl=""+snapshot.child("profileImageUrl").getValue();
                 myUserType=" "+snapshot.child("userType").getValue();
 
                 //Concatenate phone code and phone number to make full phone number
-                String phone=phoneCode+phoneNumber;
+                String phone= phoneCode+phoneNumber;
 
                 //check User Type, if Email/Google then don't allow user to edit/update email
                 if (myUserType.equalsIgnoreCase("Email")|| myUserType.equalsIgnoreCase("Google")){
@@ -263,7 +269,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                 //set data to UI
                 binding.emailEt.setText(email);
                 binding.dobEt.setText(dob);
-                binding.phoneNumberEt.setText(phone);         ///////////////////////////
+                binding.phoneNumberEt.setText(phone);
                 binding.nameEt.setText(name);
                 try {
 
@@ -276,9 +282,24 @@ public class ProfileEditActivity extends AppCompatActivity {
 
                 try {
 
+                    RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+
                     Glide.with(ProfileEditActivity.this)
                             .load(profileImageUrl)
-                            .placeholder(R.drawable.dog2)
+                            .placeholder(R.drawable.dog)
+                            .apply(requestOptions)
+                            .listener(new RequestListener<Drawable>() {
+                                @Override
+                                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                    Log.e("GlideError", "Load failed", e);
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                    return false;
+                                }
+                            })
                             .into(binding.profileIv);
 
                 }catch (Exception e){

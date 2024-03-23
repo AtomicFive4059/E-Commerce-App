@@ -1,4 +1,4 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -15,7 +15,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.creativecart_app.MainActivity;
+import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
 import com.example.creativecart_app.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

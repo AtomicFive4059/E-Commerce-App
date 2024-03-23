@@ -1,4 +1,4 @@
-package com.example.creativecart_app;
+package com.example.creativecart_app.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,15 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 
-import com.bumptech.glide.Glide;
 import com.example.creativecart_app.Fragment.AccountsFragment;
 import com.example.creativecart_app.Fragment.ChatsFragment;
 import com.example.creativecart_app.Fragment.HomeFragment;
 import com.example.creativecart_app.Fragment.MyAdsFragment;
-import com.example.creativecart_app.LoginOptionActivity.AdCreateActivity;
-import com.example.creativecart_app.LoginOptionActivity.LoginActivity;
+import com.example.creativecart_app.R;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
@@ -60,23 +57,28 @@ public class MainActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
 
-                if(itemId==R.id.menu_home){
+                if(itemId== R.id.menu_home){
                     //home item clicke,show HomeFragment
                     showHomeFragment();
                     return true;
 
-                } else if (itemId==R.id.menu_chats) {
+               }
+                else if (itemId==R.id.menu_chats) {
                     //chat item clicked, show ChatFragment
                     if (firebaseAuth.getCurrentUser()==null){
                         Utils.toast(MainActivity.this,"Login Required...");
                         startLoginOption();
                         return false;
-                    }else {
+                    }
+                    else {
                         showChatsFragment();
                         return true;
                     }
 
-                } else if (itemId==R.id.menu_my_ads) {
+                }
+
+
+               else if (itemId==R.id.menu_my_ads) {
                     //myAds item clicked, show MyAdsFragment
 
                     if (firebaseAuth.getCurrentUser()==null){
@@ -112,7 +114,11 @@ public class MainActivity extends AppCompatActivity {
         binding.sellFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              startActivity(new Intent(MainActivity.this, AdCreateActivity.class));
+
+                //Edit clicked, start AdsCreateActivity with Ads Id and isEditMode as true
+                Intent intent=new Intent(MainActivity.this, AdCreateActivity.class);
+                intent.putExtra("isEditMode",false);
+                startActivity(intent);
             }
         });
 

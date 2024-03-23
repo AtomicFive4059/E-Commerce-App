@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.creativecart_app.LoginOptionActivity.AdapterAds;
+import com.example.creativecart_app.adapters.AdapterAds;
 import com.example.creativecart_app.models.ModelAds;
 import com.example.creativecart_app.databinding.FragmentMyAdsAdsBinding;
 import com.google.firebase.auth.FirebaseAuth;

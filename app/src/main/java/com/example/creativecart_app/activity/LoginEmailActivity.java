@@ -1,4 +1,4 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 
-import com.example.creativecart_app.MainActivity;
+import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.databinding.ActivityLoginEmailBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -63,7 +63,7 @@ public class LoginEmailActivity extends AppCompatActivity {
         activityLoginEmailBinding.forgotPasswordTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 startActivity(new Intent(LoginEmailActivity.this,ForgotPasswordActivity.class));
+                 startActivity(new Intent(LoginEmailActivity.this, ForgotPasswordActivity.class));
             }
         });
 

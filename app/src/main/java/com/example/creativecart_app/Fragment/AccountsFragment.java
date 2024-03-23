@@ -1,9 +1,9 @@
 package com.example.creativecart_app.Fragment;
 
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,11 +16,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.creativecart_app.LoginOptionActivity.ChangePasswordActivity;
-import com.example.creativecart_app.LoginOptionActivity.DeleteAccountActivity;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+import com.example.creativecart_app.activity.AdCreateActivity;
+import com.example.creativecart_app.activity.ChangePasswordActivity;
+import com.example.creativecart_app.activity.DeleteAccountActivity;
 import com.example.creativecart_app.LoginOptionActivity.Utils;
-import com.example.creativecart_app.MainActivity;
+import com.example.creativecart_app.activity.MainActivity;
 import com.example.creativecart_app.R;
+import com.example.creativecart_app.activity.ProfileEditActivity;
 import com.example.creativecart_app.databinding.FragmentAccountsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,8 +38,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.security.spec.ECField;
 
 public class AccountsFragment extends Fragment {
 
@@ -74,6 +80,7 @@ public class AccountsFragment extends Fragment {
 
         loadMyInfo();
 
+
         //handle logoutBtn click, logout user and start MainActivity
         binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +98,7 @@ public class AccountsFragment extends Fragment {
         binding.editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           startActivity(new Intent(mContext,ProfileEditActivity.class));
+           startActivity(new Intent(mContext, ProfileEditActivity.class));
             }
         });
 
@@ -178,11 +185,29 @@ public class AccountsFragment extends Fragment {
                         }
 
                         try {
-                            //set profile image to profileIv
+
+                            RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+
+
                             Glide.with(mContext)
                                     .load(profileImageUrl)
-                                    .placeholder(R.drawable.dog2)
+                                    .placeholder(R.drawable.dog)
+                                    .apply(requestOptions)
+                                    .listener(new RequestListener<Drawable>() {
+
+                                        @Override
+                                        public boolean onLoadFailed(@Nullable GlideException e, @Nullable Object model, @NonNull Target<Drawable> target, boolean isFirstResource) {
+                                            return false;
+                                        }
+
+                                        @Override
+                                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                            return false;
+                                        }
+                                    })
                                     .into(binding.profileIv);
+
+
                         }catch (Exception e){
                             Log.e(TAG, "onDataChange: ",e);
                         }

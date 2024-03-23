@@ -54,10 +54,10 @@ public class MyAdsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //add the tabs to TabLayout
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("ADS"));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Favorites"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Wish List"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Shop List"));
 
-        //FragmentManager. Initializing using getChildFragmentManager() because we are using Tabsn in fragment not activity (in activityn we used getFragmentManager())
+        //FragmentManager. Initializing using getChildFragmentManager() because we are using Tabs in fragment not activity (in activityn we used getFragmentManager())
         FragmentManager fragmentManager = getChildFragmentManager();
         myTabsViewPagerAdapter = new MyTabsViewPagerAdapter(fragmentManager,getLifecycle());
         binding.viewPager.setAdapter(myTabsViewPagerAdapter);

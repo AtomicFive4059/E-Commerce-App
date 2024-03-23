@@ -1,6 +1,11 @@
 package com.example.creativecart_app.models;
 
+import android.util.Log;
+
 public class ModelAds {
+
+    String TAG="ModelAds";
+
     //Variables, Spelling and case should be same as in firebase Ads
     String id;
     String uid;
@@ -10,7 +15,7 @@ public class ModelAds {
     String address;
     String price;
     String title;
-    String description;
+    public String description;
     String status;
     long timestamp;
     double latitude;
@@ -112,6 +117,8 @@ public class ModelAds {
     }
 
     public String getTitle() {
+
+        Log.d(TAG, "getTitle: "+title);
         return title;
     }
 

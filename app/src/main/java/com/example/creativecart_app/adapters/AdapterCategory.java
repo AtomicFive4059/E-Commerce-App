@@ -1,4 +1,4 @@
-package com.example.creativecart_app.LoginOptionActivity;
+package com.example.creativecart_app.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.creativecart_app.LoginOptionActivity.RvListenerCategory;
 import com.example.creativecart_app.databinding.RowCategoryBinding;
 import com.example.creativecart_app.models.ModelCategory;
 import com.google.android.material.imageview.ShapeableImageView;

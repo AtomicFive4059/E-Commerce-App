@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.ChatsFragment">
 
 
+    <!--MaterialCardView: click to pick and show the location to show ads nearby-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchCv"
+        android:layout_marginTop="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/quantum_ic_search_grey600_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="Search"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--TextView: Browse Categories Label-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/TextAppearance.MaterialComponents.Overline"-->
+<!--        android:layout_marginStart="6dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginTop="6sp"-->
+<!--        android:textAllCaps="true"-->
+<!--        android:layout_marginBottom="2sp"-->
+<!--        android:text="Select Categoris"/>-->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Categories"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        android:layout_marginTop="6sp"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_marginBottom="2sp"/>
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/row_category"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adsRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_ad"/>
+
+
+
+
+
+    <!--RecyclerView: show Ads-->
+
+</LinearLayout>

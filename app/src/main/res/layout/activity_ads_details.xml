@@ -1,9 +1,352 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.AdsDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/toolbarRL"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <!-- ImageView: click to go back-->
+        <ImageButton
+            android:id="@+id/toolbarBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!-- TextViw-To show toolbar title -->
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/toolbarBackBtn"
+            android:layout_centerVertical="true"
+            android:text="Product Details" />
+
+        <!--ImageButton: Delete the Ads (Show this button only if the Ads is by the Current Users)-->
+        <ImageButton
+            android:id="@+id/toolbarDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_delete_outline_24"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/toolbarEditBtn"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!--ImageButton: Edit the Ads (Show this button only if the Ads is by the Current Users)-->
+        <ImageButton
+            android:id="@+id/toolbarEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_edit_24"
+            android:layout_toStartOf="@id/toolbarFavBtn"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!--ImageButton: Add/Remove the Ads to/from favorites-->
+        <ImageButton
+            android:id="@+id/toolbarFavBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fav_no"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"/>
+
+        <!-- View: To make Toolbar look separate from other UI-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRL"
+        android:layout_above="@id/optionsLl">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/imageSliderVp"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/white"/>
+
+            <!--TextView: show the price symbol-->
+            <TextView
+                android:id="@+id/priceSymbolTv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSliderVp"
+                android:layout_marginEnd="2dp"
+                android:text="@string/price" />
+
+            <!--TextView: show the price symbol-->
+            <TextView
+                android:id="@+id/priceTv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSliderVp"
+                android:layout_marginEnd="2dp"
+                android:layout_toEndOf="@id/priceSymbolTv"
+                android:text="1000" />
+
+
+            <!--TextView: show the condition of Ads-->
+            <TextView
+                android:id="@+id/conditionTv"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSliderVp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="2dp"
+                android:text="Refurbished"
+                android:textSize="12dp" />
+
+            <!--TextView: show the day/month and year-->
+            <TextView
+                android:id="@+id/dateTv"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageSliderVp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="2dp"
+                android:text="dd/mm/yyyy" />
+
+
+            <!--TextView: show Label Category-->
+            <TextView
+                android:id="@+id/categoryLabelTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateTv"
+                android:layout_marginTop="10dp"
+                android:text="Category" />
+
+
+            <!--TextView: show the Ads category-->
+            <TextView
+                android:id="@+id/categoryTv"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/categoryLabelTv"
+                android:text="The Ads Category" />
+
+
+            <!--TextView: show Title Label-->
+            <TextView
+                android:id="@+id/titleLabelTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/categoryTv"
+                android:layout_marginTop="4dp"
+                android:text="Title" />
+
+            <!--TextView: show Title of the Ads-->
+            <TextView
+                android:id="@+id/titleTv"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleLabelTv"
+                android:text="The Ads Title" />
+
+            <!--TextView: show Label Description-->
+            <TextView
+                android:id="@+id/descriptionLabelTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleTv"
+                android:layout_marginTop="4dp"
+                android:text="Description" />
+
+            <!--TextView: show description about Ads-->
+            <TextView
+                android:id="@+id/descriptionTv"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descriptionLabelTv"
+                android:text="@tools:sample/lorem[25]" />
+
+
+            <!--TextView: show Label Address-->
+            <TextView
+                android:id="@+id/addreLabelTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descriptionTv"
+                android:layout_marginTop="4dp"
+                android:text="Address" />
+
+            <!--TextView: show Address of the Ads-->
+            <TextView
+                android:id="@+id/addessTv"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addreLabelTv"
+                android:text="Addess Of The Ads" />
+
+            <!--TextView: show the seller profile/description label-->
+            <TextView
+                android:id="@+id/sellerProfileLabelTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addessTv"
+                android:layout_marginTop="4dp"
+                android:text="Seller Description" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sellerProfileCv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sellerProfileLabelTv"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--ShapeableImageView: to show seller Profile Image-->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/sellerProfileIv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="#7B7676"
+                        android:src="@drawable/baseline_person_24"
+                        app:shapeAppearanceOverlay="@style/ImageStyle_Circle" />
+
+                    <!--TextView: show the name of seller-->
+                    <TextView
+                        android:id="@+id/sellerNameTv"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/sellerProfileIv"
+                        android:text="Full Name" />
+
+                    <!--TextView: show the member since label-->
+                    <TextView
+                        android:id="@+id/memberSinceLabelTV"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sellerNameTv"
+                        android:layout_toEndOf="@id/sellerProfileIv"
+                        android:text="Member From" />
+
+                    <!--TextView: show the member since date e.g. 20/12/2024-->
+                    <TextView
+                        android:id="@+id/memberSinceTv"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sellerNameTv"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@id/memberSinceLabelTV"
+                        android:text="dd/mm/yyyy" />
+
+                    <!--ImageView: Just an indicator to show next is something-->
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/optionsLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="2dp"
+        android:orientation="horizontal">
+
+        <!--MaterialButton: to chat -->
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/chatBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="2dp"-->
+<!--            android:layout_weight="1"-->
+<!--            app:cornerRadius="8dp"-->
+<!--            android:text="Variety"-->
+<!--            android:textSize="11sp"-->
+<!--            app:icon="@drawable/baseline_chat_24"/> -->
+
+        <!--MaterialButton: to call -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/callBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            app:cornerRadius="8dp"
+            android:textSize="11sp"
+            android:text="Call"
+            app:icon="@drawable/baseline_call_24"/>
+
+        <!--MaterialButton: to do SMS-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/smsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            app:cornerRadius="8dp"
+            android:layout_weight="1"
+            android:text="SMS"
+            android:textSize="11sp"
+            app:icon="@drawable/baseline_3p_24"/>
+
+        <!--MaterialButton: to see on Map-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mapBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            app:cornerRadius="8dp"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:text="Map"
+            app:icon="@drawable/baseline_my_location_24"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

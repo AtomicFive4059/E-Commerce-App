@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
-    android:background="#FBE9E7"
     tools:context=".Fragment.AccountsFragment">
 
     <RelativeLayout
@@ -18,10 +17,9 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
             android:padding="10dp"
-            android:src="@drawable/dog2"
             app:shapeAppearanceOverlay="@style/ImageStyle_Corner_Rounded"/>
 
         <!--TextView: User full name label-->
@@ -216,17 +214,30 @@
 
             </com.google.android.material.card.MaterialCardView> x
 
-        </LinearLayout>-->
+        </LinearLayout>  -->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/becomeSellerBtn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/verificationLabelTV"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:foreground="?selectableItemBackground"-->
+<!--            app:cornerRadius="8dp"-->
+<!--            android:text="Become a Seller"-->
+<!--            app:icon="@drawable/baseline_add_business_24"/>-->
+
 
         <!--MaterialButton: to logout from account-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logOutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/verificationLabelTV"
-            android:layout_marginTop="30dp"
             app:cornerRadius="8dp"
             android:text="LogOut"
+            android:layout_below="@id/changePasswordBtn"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?selectableItemBackground"
@@ -237,7 +248,8 @@
             android:id="@+id/editProfileBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logOutBtn"
+            android:layout_below="@id/verificationLabelTV"
+            android:layout_marginTop="30sp"
             app:cornerRadius="4dp"
             android:clickable="true"
             android:focusable="true"
@@ -250,7 +262,7 @@
             android:id="@+id/changePasswordBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editProfileBtn"
+            android:layout_below="@+id/verifyAccountBtn"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?selectableItemBackground"
@@ -263,7 +275,7 @@
             android:id="@+id/verifyAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/changePasswordBtn"
+            android:layout_below="@+id/editProfileBtn"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?selectableItemBackground"
@@ -276,7 +288,7 @@
             android:id="@+id/deleteAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/verifyAccountBtn"
+            android:layout_below="@id/logOutBtn"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?selectableItemBackground"

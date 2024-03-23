@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginOptionActivity.AdCreateActivity">
+    tools:context=".activity.AdCreateActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRL"
@@ -16,7 +16,7 @@
             android:id="@+id/toolbarBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
+            android:src="@drawable/baseline_arrow_back_ios_24"
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:padding="10dp"/>
@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/toolbarBackBtn"
             android:text="Create Ads" />
 
         <!-- View: To make Toolbar look separate from other UI-->
@@ -66,21 +67,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pick UP 10 Images"
+                android:textStyle="bold"
                 style="@style/TextAppearance.MaterialComponents.Body1"/>
 
             <!--RecyclerView: show images pick/taken from Camera/Gallery -->
-
-            <!--TextInputLayout: input brand of the Ad being created -->
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imageRv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageLabelTv"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="10dp"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                 app:spanCount="4"
                 tools:listitem="@layout/row_image_picked" />
+
+
+            <!--TextInputLayout: input brand of the Ad being created -->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/brandTil"
@@ -122,7 +124,7 @@
                     android:id="@+id/categoryAct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,6 +254,6 @@
         app:cornerRadius="8dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
-        android:text="Post Ads"/>
+        android:text="Launch Product"/>
 
 </RelativeLayout>

@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Category"
+        android:text="Category|"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="6dp"
         style="@style/TextAppearance.MaterialComponents.Body1"/>
