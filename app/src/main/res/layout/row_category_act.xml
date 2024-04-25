@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:text="Categories"
     android:padding="16dp"
-    android:drawableStart="@drawable/baseline_forward_24"
+    android:drawableStart="@drawable/baseline_arrow_right_24"
     android:drawablePadding="10dp"
     style="?attr/textAppearanceSubtitle1"
     android:ellipsize="end"

@@ -166,8 +166,6 @@ public class ProfileEditActivity extends AppCompatActivity {
                         if (uriTask.isSuccessful()){
                             updateProfileDb(uploadedImageUrl);
                         }
-
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

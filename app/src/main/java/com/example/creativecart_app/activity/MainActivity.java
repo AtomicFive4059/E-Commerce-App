@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
+    //instance of the BroadcastReceiver
+    private BroadcastReceiver broadcastReceiver;
+
     ActivityMainBinding binding;
 
     private FirebaseAuth firebaseAuth;
@@ -33,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //initiating BroadcastReceiver with noInternet() class
+        broadcastReceiver = new noInternet();
+
+        //For Activity start and close
+        registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
 //        Glide.with(this).setLogLevel(Log.VERBOSE); //setloglevel not available
 
@@ -122,6 +133,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //for destroying the activity and for unregisterReceiver
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //unregisterReceiver for passed BroadcastReceiver object
+        unregisterReceiver(broadcastReceiver);
     }
 
     private void showHomeFragment() {
