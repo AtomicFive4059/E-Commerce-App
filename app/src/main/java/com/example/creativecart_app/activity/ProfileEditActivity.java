@@ -115,7 +115,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     //input data
     private void validateData() {
         name=binding.nameEt.getText().toString().trim();
-        dob=binding.dobEt.getText().toString().trim();
+     //   dob=binding.dobEt.getText().toString().trim();
         email=binding.emailEt.getText().toString().trim();
         phoneCode=binding.coutryCodePicker.getSelectedCountryCodeWithPlus();
         phoneNumber=binding.phoneNumberEt.getText().toString().trim();
@@ -147,7 +147,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                         double progress=(100.0*snapshot.getBytesTransferred()) /snapshot.getTotalByteCount();
-                        Log.d(TAG, "onProgress: Progess: "+progress);
+                        Log.d(TAG, "onProgress: Process: "+progress);
 
                         progressDialog.setMessage("Uploading Profile Image. Progress: "+(int) progress + "%");
                     }
@@ -239,7 +239,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 //get User Info, spelling shoud be as in Firebase realtime database
-                String dob=""+snapshot.child("dob").getValue();
+               // String dob=""+snapshot.child("dob").getValue();
                 String email=""+snapshot.child("email").getValue();
                 String name=""+snapshot.child("name").getValue();
                 String phoneCode=""+snapshot.child("phoneCode").getValue();
@@ -266,7 +266,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                 }
                 //set data to UI
                 binding.emailEt.setText(email);
-                binding.dobEt.setText(dob);
+              //  binding.dobEt.setText(dob);
                 binding.phoneNumberEt.setText(phone);
                 binding.nameEt.setText(name);
                 try {

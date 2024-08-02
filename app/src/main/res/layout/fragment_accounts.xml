@@ -90,25 +90,25 @@
               android:textColor="@color/black"/>
 
         <!--TextView: User Date of Birth label-->
-        <TextView
-            android:id="@+id/dobLabelTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/phoneLabelTV"
-            android:layout_marginTop="10dp"
-            android:text="DOB :"
-            style="@style/TextAppearance.MaterialComponents.Body1"/>
+<!--        <TextView-->
+<!--            android:id="@+id/dobLabelTV"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/phoneLabelTV"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="DOB :"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Body1"/>-->
 
         <!--TextView: User Date Of Birth-->
-        <TextView
-            android:id="@+id/dobTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_below="@id/phoneLabelTV"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentEnd="true"
-            android:text="dd/mm/20yy"/>
+<!--        <TextView-->
+<!--            android:id="@+id/dobTv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            android:layout_below="@id/phoneLabelTV"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:text="dd/mm/20yy"/>-->
 
 
         <!--TextView: User Membership  label-->
@@ -116,7 +116,7 @@
             android:id="@+id/memberSinceLabelTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/dobLabelTV"
+            android:layout_below="@id/phoneLabelTV"
             android:layout_marginTop="10dp"
             android:text="Member From :"
             style="@style/TextAppearance.MaterialComponents.Body1"/>
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_below="@id/dobLabelTV"
+            android:layout_below="@id/phoneLabelTV"
             android:layout_marginTop="10dp"
             android:layout_alignParentEnd="true"
             android:text="dd/mm/20yy"/>

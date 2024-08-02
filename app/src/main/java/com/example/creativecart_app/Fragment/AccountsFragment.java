@@ -159,7 +159,7 @@ public class AccountsFragment extends Fragment {
                         //set data to UI
                         binding.emailTV.setText(email);
                         binding.nameTv.setText(name );
-                        binding.dobTv.setText(dob);
+                      //  binding.dobTv.setText(dob);
                         binding.phoneTv.setText(phone);
                         binding.memberSinceTv.setText(formatedDate);
 

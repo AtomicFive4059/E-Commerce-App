@@ -111,8 +111,8 @@ public class MyAds_AdsFragment extends Fragment {
 
         //Firebase DB listener to load Ads by currently logged in user. i.e. show only those Ads whose key id is equal to the uid of the currently logged in user
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Ads");
-        reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
-                .addValueEventListener(new ValueEventListener() {
+      //  reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
