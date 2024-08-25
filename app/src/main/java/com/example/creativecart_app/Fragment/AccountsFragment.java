@@ -110,6 +110,16 @@ public class AccountsFragment extends Fragment {
             }
         });
 
+        binding.refferedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT,"Reffred this App for Shop,com.example.creativecart_app");
+                startActivity(Intent.createChooser(intent,"Thank You For Efforts.."));
+            }
+        });
+
         //Handle verifyAccounyBtn click, start VerifyAccountActivity
         binding.verifyAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override

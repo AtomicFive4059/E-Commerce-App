@@ -238,7 +238,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                //get User Info, spelling shoud be as in Firebase realtime database
+                //get User Info, spelling should be as in Firebase realtime database
                // String dob=""+snapshot.child("dob").getValue();
                 String email=""+snapshot.child("email").getValue();
                 String name=""+snapshot.child("name").getValue();
