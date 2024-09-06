@@ -16,6 +16,10 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.creativecart_app.LoginOptionActivity.Utils;
 import com.example.creativecart_app.R;
@@ -39,6 +43,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -76,6 +81,41 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         //Obtain the SupportFragment and get notified, when the is ready to used
         SupportMapFragment mapFragment=(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
          mapFragment.getMapAsync(this);
+
+        Spinner spinner = findViewById(R.id.spinnerMapType);
+        ArrayList<String> arrayListSpinner = new ArrayList<>();
+
+        arrayListSpinner.add("Normal");
+        arrayListSpinner.add("Hybrid");
+        arrayListSpinner.add("Satelite");
+        arrayListSpinner.add("Terrain");
+        arrayListSpinner.add("Nome");
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }else if (position == 1){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                } else if (position == 2) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                } else if (position == 3) {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                }else {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(getApplicationContext(),"Default Mode Of Map",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayListSpinner);
+        spinner.setAdapter(adapter);
 
          //initialized the Place Client
         Places.initialize(this,getString(R.string.google_map_api_key));
@@ -139,20 +179,20 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
 
     //Handle toolbarGpsBtn click, if GPS enabled get and show user current location
-        binding.toolbarGPSBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                //check if location enabled
-                if (isGPSEnabled()){
-                    requestLocationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-                }else {
-                    //GPS/Location not enabled
-                    Utils.toast(LocationPickerActivity.this,"Location is not on..! Turn it on to show current location ");
-                }
-            }
-        });
+//        binding.toolbarGPSBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//                //check if location enabled
+//                if (isGPSEnabled()){
+//                    requestLocationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+//                }else {
+//                    //GPS/Location not enabled
+//                    Utils.toast(LocationPickerActivity.this,"Location is not on..! Turn it on to show current location ");
+//                }
+//            }
+//        });
 
         //Handle doneLl click, get the selected location back to requesting activity/fragment class
         binding.doneBtn.setOnClickListener(new View.OnClickListener() {
